@@ -19,6 +19,25 @@ const std::string kVersionFilename{"/version"};
 const std::string kOSPath{"/etc/os-release"};
 const std::string kPasswordPath{"/etc/passwd"};
 
+// Filter words
+const std::string kFilterMemTotal{"MemTotal:"};
+const std::string kFilterMemFree{"MemFree:"};
+const std::string kFilterBuffers{"Buffers:"};
+const std::string kFilterOSName{"PRETTY_NAME"};
+const std::string kFilterCpuUtil{"cpu"};
+const std::string kFilterProcesses{"processes"};
+const std::string kFilterRunningProcesses{"procs_running"};
+const std::string kFilterRam{"VmSize:"};
+const std::string kFilterUid{"Uid:"};
+const std::string kOldLinuxVersion{"2.6"};
+
+// Positions inside the line after keywords
+const uint16_t kKernelPos{2};
+const uint16_t kUpTimePos{0};
+const u_int16_t kRamScale{1000};
+const u_int16_t kPidUptimePos{21};
+const std::vector<u_int16_t> kCpuUtilPos{13,14,15,16,21};
+
 // System
 float MemoryUtilization();
 long UpTime();
@@ -44,10 +63,6 @@ enum CPUStates {
 };
 
 std::vector<std::string> CpuUtilization();
-long Jiffies();
-long ActiveJiffies();
-long ActiveJiffies(int pid);
-long IdleJiffies();
 
 // Processes
 std::string Command(int pid);

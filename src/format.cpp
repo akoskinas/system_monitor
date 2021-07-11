@@ -3,13 +3,9 @@
 
 using std::string;
 
-// TODO: Complete this helper function
-// INPUT: Long int measuring seconds
-// OUTPUT: HH:MM:SS
-// REMOVE: [[maybe_unused]] once you define the function
 string Format::ElapsedTime(long seconds) {
     string H{},M{},S{},total{};
-    int hrs = (seconds/3600);
+    int hrs = (seconds / 3600);
     int remainingTime = seconds - hrs * 3600;
     int mins = (remainingTime/60);
     remainingTime = remainingTime - mins*60;
